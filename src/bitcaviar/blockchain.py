@@ -4,14 +4,14 @@ More info: https://developer.bitcoin.org/reference/rpc/
 """
 
 import json
-from pybitcoin.__helpers import __run
+from bitcaviar.__helpers import __run
 
 
 def get_best_block_hash(bitcoin):
     """
     Get the hash of the best (tip) block in the most-work fully-validated chain
     More info: https://developer.bitcoin.org/reference/rpc/getbestblockhash.html
-    :param bitcoin: src.pybitcoin.config.Bitcoin, required
+    :param bitcoin: src.bitcaviar.config.Bitcoin, required
     :return: string
     """
 
@@ -28,7 +28,7 @@ def get_block(bitcoin, blockhash, verbosity=1):
     More info: https://developer.bitcoin.org/reference/rpc/getblock.html
     :param blockhash: string, required
     :param verbosity: int, optional, default=1
-    :param bitcoin: src.pybitcoin.config.Bitcoin, required
+    :param bitcoin: src.bitcaviar.config.Bitcoin, required
     :return: if verbosity=0 returns string, else returns dict
     """
 
@@ -45,7 +45,7 @@ def get_blockchain_info(bitcoin):
     """
     Get an object containing various state info regarding blockchain processing
     More info: https://developer.bitcoin.org/reference/rpc/getblockchaininfo.html
-    :param bitcoin: src.pybitcoin.config.Bitcoin, required
+    :param bitcoin: src.bitcaviar.config.Bitcoin, required
     :return: dict
     """
 
@@ -60,7 +60,7 @@ def get_block_count(bitcoin):
     """
     Get the height of the most-work fully-validated chain
     More info: https://developer.bitcoin.org/reference/rpc/getblockcount.html
-    :param bitcoin: src.pybitcoin.config.Bitcoin, required
+    :param bitcoin: src.bitcaviar.config.Bitcoin, required
     :return: int
     """
 
@@ -77,7 +77,7 @@ def get_block_filter(bitcoin, block_hash, filter_type='basic'):
     To enable the compact block filter, you need to start bitcoind with the -blockfilterindex=basic
     (or simply -blockfilterindex) command line option, or put that option in your bitcoin.conf file
     More info: https://developer.bitcoin.org/reference/rpc/getblockfilter.html
-    :param bitcoin: src.pybitcoin.config.Bitcoin, required
+    :param bitcoin: src.bitcaviar.config.Bitcoin, required
     :param block_hash: string, required
     :param filter_type: string, optional, default=basic
     :return: dict
@@ -94,7 +94,7 @@ def get_block_hash(bitcoin, height):
     """
     Get hash of block in best-block-chain at height provided
     More info: https://developer.bitcoin.org/reference/rpc/getblockhash.html
-    :param bitcoin: src.pybitcoin.config.Bitcoin, required
+    :param bitcoin: src.bitcaviar.config.Bitcoin, required
     :param height: int, required
     :return: string
     """
@@ -110,7 +110,7 @@ def get_block_header(bitcoin, block_hash, verbose=True):
     """
     Get block header information
     More info: https://developer.bitcoin.org/reference/rpc/getblockheader.html
-    :param bitcoin: src.pybitcoin.config.Bitcoin, required
+    :param bitcoin: src.bitcaviar.config.Bitcoin, required
     :param block_hash: string, required
     :param verbose: boolean, optional, default=True
     :return: if verbose=false returns string, else returns dict
@@ -130,7 +130,7 @@ def get_block_stats(bitcoin, hash_or_height, stats='all'):
     Compute per block statistics for a given window. All amounts are in satoshis.
     It won’t work for some heights with pruning.
     More info: https://developer.bitcoin.org/reference/rpc/getblockstats.html
-    :param bitcoin: src.pybitcoin.config.Bitcoin, required
+    :param bitcoin: src.bitcaviar.config.Bitcoin, required
     :param hash_or_height: string, required
     :param stats: list of strings, optional, default=all values
     :return: dict
@@ -155,7 +155,7 @@ def get_chain_tips(bitcoin):
     """
     Get information about all known tips in the block tree, including the main chain as well as orphaned branches
     More info: https://developer.bitcoin.org/reference/rpc/getchaintips.html
-    :param bitcoin: src.pybitcoin.config.Bitcoin, required
+    :param bitcoin: src.bitcaviar.config.Bitcoin, required
     :return: list of dicts
     """
 
@@ -172,7 +172,7 @@ def get_chain_tx_stats(bitcoin, nblocks=None):
     """
         Get statistics about the total number and rate of transactions in the chain
         More info: https://developer.bitcoin.org/reference/rpc/getchaintxstats.html
-        :param bitcoin: src.pybitcoin.config.Bitcoin, required
+        :param bitcoin: src.bitcaviar.config.Bitcoin, required
         :param nblocks: int, optional, default=one month
         :param blockhash: currently not supported
         :return: dict
@@ -193,7 +193,7 @@ def get_difficulty(bitcoin):
     """
     Get the proof-of-work difficulty as a multiple of the minimum difficulty
     More info: https://developer.bitcoin.org/reference/rpc/getdifficulty.html
-    :param bitcoin: src.pybitcoin.config.Bitcoin, required
+    :param bitcoin: src.bitcaviar.config.Bitcoin, required
     :return: string
     """
 
@@ -207,7 +207,7 @@ def get_mempool_ancestors(bitcoin, txid, verbose=False):
     """
     Get all in-mempool ancestors if txid is in the mempool
     More info: https://developer.bitcoin.org/reference/rpc/getmempoolancestors.html
-    :param bitcoin: src.pybitcoin.config.Bitcoin, required
+    :param bitcoin: src.bitcaviar.config.Bitcoin, required
     :param txid: string, required
     :param verbose: boolean, optional, default=False
     :return: if verbose=False returns list of dicts, else dict
@@ -224,7 +224,7 @@ def get_mempool_descendants(bitcoin, txid, verbose=False):
     """
     Get all in-mempool descendants if txid is in the mempool
     More info: https://developer.bitcoin.org/reference/rpc/getmempooldescendants.html
-    :param bitcoin: src.pybitcoin.config.Bitcoin, required
+    :param bitcoin: src.bitcaviar.config.Bitcoin, required
     :param txid: string, required
     :param verbose: boolean, optional, default=False
     :return: if verbose=False returns list, else dict
@@ -242,7 +242,7 @@ def get_mempool_entry(bitcoin, txid):
     Get mempool data for given transaction
     The transaction id must be in mempool
     More info: https://developer.bitcoin.org/reference/rpc/getmempoolentry.html
-    :param bitcoin: src.pybitcoin.config.Bitcoin, required
+    :param bitcoin: src.bitcaviar.config.Bitcoin, required
     :param txid: string, required
     :return: dict
     """
@@ -272,7 +272,7 @@ def get_raw_mempool(bitcoin, verbose=False, mempool_sequence=False):
     """
     Get all transaction ids in memory pool
     More info: https://developer.bitcoin.org/reference/rpc/getrawmempool.html
-    :param bitcoin: src.pybitcoin.config.Bitcoin, required
+    :param bitcoin: src.bitcaviar.config.Bitcoin, required
     :param verbose: boolean, optional, default=False
     :param mempool_sequence: boolean, optional, default=False
     :return: if verbose=False returns list, else dict
@@ -289,7 +289,7 @@ def get_tx_out(bitcoin, txid, n, include_mempool=True):
     """
     Get details about an unspent transaction output
     More info: https://developer.bitcoin.org/reference/rpc/gettxout.html
-    :param bitcoin: src.pybitcoin.config.Bitcoin, required
+    :param bitcoin: src.bitcaviar.config.Bitcoin, required
     :param txid: string, required
     :param n: int, required
     :param include_mempool: boolean, optional, default=true
@@ -314,7 +314,7 @@ def get_tx_out_proof(bitcoin, txids, blockhash=None):
     this transaction. To make it always work, you need to maintain a transaction index, using the -txindex command
     line option or specify the block in which the transaction is included manually (by blockhash)
     More info: https://developer.bitcoin.org/reference/rpc/gettxoutproof.html
-    :param bitcoin: src.pybitcoin.config.Bitcoin, required
+    :param bitcoin: src.bitcaviar.config.Bitcoin, required
     :param txids: list, required
     :param blockhash: string, optional
     :return: string
@@ -338,7 +338,7 @@ def get_tx_out_set_info(bitcoin, hash_type=None):
     Get statistics about the unspent transaction output set
     Note this call may take some time
     More info: https://developer.bitcoin.org/reference/rpc/gettxoutsetinfo.html
-    :param bitcoin:  src.pybitcoin.config.Bitcoin, required
+    :param bitcoin:  src.bitcaviar.config.Bitcoin, required
     :param hash_type: string, optional, default=hash_serialized_2
     :return: dict
     """
@@ -360,7 +360,7 @@ def get_precious_block(bitcoin, blockhash):
     A later precious block call can override the effect of an earlier one.
     The effects of precious block are not retained across restarts.
     More info: https://developer.bitcoin.org/reference/rpc/preciousblock.html
-    :param bitcoin: src.pybitcoin.config.Bitcoin, required
+    :param bitcoin: src.bitcaviar.config.Bitcoin, required
     :param blockhash: string, required
     :return: None
     """
@@ -376,7 +376,7 @@ def prune_blockchain(bitcoin, height):
     Get prune blockchain height
     You have to set your node into prune mode to make this call work.
     More info: https://developer.bitcoin.org/reference/rpc/pruneblockchain.html
-    :param bitcoin: src.pybitcoin.config.Bitcoin, required
+    :param bitcoin: src.bitcaviar.config.Bitcoin, required
     :param height: int, required
     :return: string
     """
@@ -392,7 +392,7 @@ def save_mempool(bitcoin):
     """
     Dumps the mempool to disk. It will fail until the previous dump is fully loaded
     More info: https://developer.bitcoin.org/reference/rpc/savemempool.html
-    :param bitcoin: src.pybitcoin.config.Bitcoin, required
+    :param bitcoin: src.bitcaviar.config.Bitcoin, required
     :return: None
     """
 
@@ -411,7 +411,7 @@ def verify_chain(bitcoin, checklevel=3, nblocks=6):
     """
     Verifies blockchain database
     More info: https://developer.bitcoin.org/reference/rpc/verifychain.html
-    :param bitcoin: src.pybitcoin.config.Bitcoin, required
+    :param bitcoin: src.bitcaviar.config.Bitcoin, required
     :param checklevel: int, optional, default=3, range=0-4
     :param nblocks: int, optional, default=6, 0=all
     :return: boolean
@@ -434,7 +434,7 @@ def verify_tx_out_proof(bitcoin, proof):
     Verifies that a proof points to a transaction in a block, returning the transaction it commits to and throwing
     an RPC error if the block is not in our best chain
     More info: https://developer.bitcoin.org/reference/rpc/verifytxoutproof.html
-    :param bitcoin: src.pybitcoin.config.Bitcoin, required
+    :param bitcoin: src.bitcaviar.config.Bitcoin, required
     :param proof: string, required
     :return: list
     """

@@ -1,6 +1,6 @@
 from unittest import TestCase
-from src.pybitcoin.blockchain import *
-from src.pybitcoin import config
+from src.bitcaviar.blockchain import *
+from src.bitcaviar import config
 
 
 class TestBlockchain(TestCase):
