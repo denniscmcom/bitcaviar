@@ -2,6 +2,9 @@
 A simple Python wrapper for Bitcoin JSON-RPC API.
 
 ## Installation
+```bash
+pip install bitcaviar
+```
 
 ## Usage
 You should pass your `bitcoin-cli` directory and where you have the blockchain stored to each method.
@@ -9,7 +12,10 @@ You should pass your `bitcoin-cli` directory and where you have the blockchain s
 ```python
 from bitcaviar import config
 
-bitcoin = config.Bitcoin(cli_dir='your/dir/to/bitcoin-cli', data_dir='/where/is/the/blockchain')
+bitcoin = config.Bitcoin(
+    cli_dir='your/dir/to/bitcoin-cli', 
+    data_dir='/where/is/the/blockchain'
+)
 ```
 
 ### Example 1
@@ -21,7 +27,11 @@ from bitcaviar import blockchain
 
 
 def main():
-    bitcoin = config.Bitcoin(cli_dir='bitcoin-cli', data_dir='/Users/dennis/Bitcoin')
+    bitcoin = config.Bitcoin(
+        cli_dir='bitcoin-cli', 
+        data_dir='/Users/dennis/Bitcoin'
+    )
+    
     block_count = blockchain.get_block_count(bitcoin=bitcoin)
 
     print(block_count)
