@@ -3,7 +3,7 @@
 import subprocess
 
 
-def run(command):
+def __run(command):
     """
     Execute shell command
     :param command: list, required

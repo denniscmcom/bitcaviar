@@ -4,7 +4,7 @@ More info: https://developer.bitcoin.org/reference/rpc/
 """
 
 import json
-from src.pybitcoin.helpers import run
+from pybitcoin.__helpers import __run
 
 
 def get_best_block_hash(bitcoin):
@@ -16,7 +16,7 @@ def get_best_block_hash(bitcoin):
     """
 
     command = [bitcoin.cli_dir, bitcoin.data_dir, 'getbestblockhash']
-    best_block_hash = run(command)
+    best_block_hash = __run(command)
     best_block_hash = best_block_hash.rstrip()
 
     return best_block_hash
@@ -33,7 +33,7 @@ def get_block(bitcoin, blockhash, verbosity=1):
     """
 
     command = [bitcoin.cli_dir, bitcoin.data_dir, 'getblock', blockhash, str(verbosity)]
-    block = run(command)
+    block = __run(command)
 
     if verbosity == 1 or verbosity == 2:
         block = json.loads(block)
@@ -50,7 +50,7 @@ def get_blockchain_info(bitcoin):
     """
 
     command = [bitcoin.cli_dir, bitcoin.data_dir, 'getblockchaininfo']
-    blockchain_info = run(command)
+    blockchain_info = __run(command)
     blockchain_info = json.loads(blockchain_info)
 
     return blockchain_info
@@ -65,7 +65,7 @@ def get_block_count(bitcoin):
     """
 
     command = [bitcoin.cli_dir, bitcoin.data_dir, 'getblockcount']
-    block_count = run(command)
+    block_count = __run(command)
     block_count = int(block_count)
 
     return block_count
@@ -84,7 +84,7 @@ def get_block_filter(bitcoin, block_hash, filter_type='basic'):
     """
 
     command = [bitcoin.cli_dir, bitcoin.data_dir, 'getblockfilter', block_hash, filter_type]
-    block_filter = run(command)
+    block_filter = __run(command)
     block_filter = json.loads(block_filter)
 
     return block_filter
@@ -100,7 +100,7 @@ def get_block_hash(bitcoin, height):
     """
 
     command = [bitcoin.cli_dir, bitcoin.data_dir, 'getblockhash', str(height)]
-    block_hash = run(command)
+    block_hash = __run(command)
     block_hash = block_hash.rstrip()
 
     return block_hash
@@ -117,7 +117,7 @@ def get_block_header(bitcoin, block_hash, verbose=True):
     """
 
     command = [bitcoin.cli_dir, bitcoin.data_dir, 'getblockheader', block_hash, str(verbose).lower()]
-    block_header = run(command)
+    block_header = __run(command)
 
     if verbose:
         block_header = json.loads(block_header)
@@ -145,7 +145,7 @@ def get_block_stats(bitcoin, hash_or_height, stats='all'):
         stats = json.dumps(stats)
         command = [bitcoin.cli_dir, bitcoin.data_dir, 'getblockstats', hash_or_height, stats]
 
-    block_stats = run(command)
+    block_stats = __run(command)
     block_stats = json.loads(block_stats)
 
     return block_stats
@@ -160,7 +160,7 @@ def get_chain_tips(bitcoin):
     """
 
     command = [bitcoin.cli_dir, bitcoin.data_dir, 'getchaintips']
-    chain_tips = run(command)
+    chain_tips = __run(command)
     chain_tips = json.loads(chain_tips)
 
     return chain_tips
@@ -183,7 +183,7 @@ def get_chain_tx_stats(bitcoin, nblocks=None):
     else:
         command = [bitcoin.cli_dir, bitcoin.data_dir, 'getchaintxstats']
 
-    chain_tx_stats = run(command)
+    chain_tx_stats = __run(command)
     chain_tx_stats = json.loads(chain_tx_stats)
 
     return chain_tx_stats
@@ -198,7 +198,7 @@ def get_difficulty(bitcoin):
     """
 
     command = [bitcoin.cli_dir, bitcoin.data_dir, 'getdifficulty']
-    difficulty = run(command)
+    difficulty = __run(command)
 
     return difficulty
 
@@ -214,7 +214,7 @@ def get_mempool_ancestors(bitcoin, txid, verbose=False):
     """
 
     command = [bitcoin.cli_dir, bitcoin.data_dir, 'getmempoolancestors', txid, str(verbose).lower()]
-    mempool_ancestors = run(command)
+    mempool_ancestors = __run(command)
     mempool_ancestors = json.loads(mempool_ancestors)
 
     return mempool_ancestors
@@ -231,7 +231,7 @@ def get_mempool_descendants(bitcoin, txid, verbose=False):
     """
 
     command = [bitcoin.cli_dir, bitcoin.data_dir, 'getmempooldescendants', txid, str(verbose).lower()]
-    mempool_descendants = run(command)
+    mempool_descendants = __run(command)
     mempool_descendants = json.loads(mempool_descendants)
 
     return mempool_descendants
@@ -248,7 +248,7 @@ def get_mempool_entry(bitcoin, txid):
     """
 
     command = [bitcoin.cli_dir, bitcoin.data_dir, 'getmempoolentry', txid]
-    mempool_entry = run(command)
+    mempool_entry = __run(command)
     mempool_entry = json.loads(mempool_entry)
 
     return mempool_entry
@@ -262,7 +262,7 @@ def get_mempool_info(bitcoin):
     """
 
     command = [bitcoin.cli_dir, bitcoin.data_dir, 'getmempoolinfo']
-    mempool_info = run(command)
+    mempool_info = __run(command)
     mempool_info = json.loads(mempool_info)
 
     return mempool_info
@@ -279,7 +279,7 @@ def get_raw_mempool(bitcoin, verbose=False, mempool_sequence=False):
     """
 
     command = [bitcoin.cli_dir, bitcoin.data_dir, 'getrawmempool', str(verbose).lower(), str(mempool_sequence).lower()]
-    raw_mempool = run(command)
+    raw_mempool = __run(command)
     raw_mempool = json.loads(raw_mempool)
 
     return raw_mempool
@@ -297,7 +297,7 @@ def get_tx_out(bitcoin, txid, n, include_mempool=True):
     """
 
     command = [bitcoin.cli_dir, bitcoin.data_dir, 'gettxout', txid, str(n), str(include_mempool).lower()]
-    tx_out = run(command)
+    tx_out = __run(command)
 
     if tx_out:
         tx_out = json.loads(tx_out)
@@ -327,7 +327,7 @@ def get_tx_out_proof(bitcoin, txids, blockhash=None):
     else:
         command = [bitcoin.cli_dir, bitcoin.data_dir, 'gettxoutproof', txids]
 
-    tx_out_proof = run(command)
+    tx_out_proof = __run(command)
     tx_out_proof = tx_out_proof.rstrip()
 
     return tx_out_proof
@@ -348,7 +348,7 @@ def get_tx_out_set_info(bitcoin, hash_type=None):
     else:
         command = [bitcoin.cli_dir, bitcoin.data_dir, 'gettxoutsetinfo']
 
-    tx_out_set_info = run(command)
+    tx_out_set_info = __run(command)
     tx_out_set_info = json.loads(tx_out_set_info)
 
     return tx_out_set_info
@@ -366,7 +366,7 @@ def get_precious_block(bitcoin, blockhash):
     """
 
     command = [bitcoin.cli_dir, bitcoin.data_dir, 'preciousblock', blockhash]
-    precious_block = run(command)
+    precious_block = __run(command)
 
     return precious_block
 
@@ -382,7 +382,7 @@ def prune_blockchain(bitcoin, height):
     """
 
     command = [bitcoin.cli_dir, bitcoin.data_dir, 'pruneblockchain', str(height)]
-    prune_blockchain_height = run(command)
+    prune_blockchain_height = __run(command)
     prune_blockchain_height = int(prune_blockchain_height)
 
     return prune_blockchain_height
@@ -397,7 +397,7 @@ def save_mempool(bitcoin):
     """
 
     command = [bitcoin.cli_dir, bitcoin.data_dir, 'savemempool']
-    run(command)
+    __run(command)
 
     return None
 
@@ -418,7 +418,7 @@ def verify_chain(bitcoin, checklevel=3, nblocks=6):
     """
 
     command = [bitcoin.cli_dir, bitcoin.data_dir, 'verifychain', str(checklevel), str(nblocks)]
-    verification = run(command).rstrip()
+    verification = __run(command).rstrip()
 
     if verification == 'true':
         verification = True
@@ -440,7 +440,7 @@ def verify_tx_out_proof(bitcoin, proof):
     """
 
     command = [bitcoin.cli_dir, bitcoin.data_dir, 'verifytxoutproof', proof]
-    txids = run(command)
+    txids = __run(command)
     txids = json.loads(txids)
 
     return txids
