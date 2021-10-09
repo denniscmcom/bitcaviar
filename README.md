@@ -1,2 +1,2 @@
 # pybitcoin 
-A simple Python wrapper for Bitcoin JSON-RPC API
+A simple Python wrapper for Bitcoin JSON-RPC API.
