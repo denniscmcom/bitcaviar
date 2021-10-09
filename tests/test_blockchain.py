@@ -1,6 +1,6 @@
 from unittest import TestCase
-from src.bitcaviar.blockchain import *
-from src.bitcaviar import config
+from bitcaviar.blockchain import *
+from bitcaviar import config
 
 
 class TestBlockchain(TestCase):
