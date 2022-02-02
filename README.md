@@ -3,7 +3,7 @@
 </p>
 
 
-# bitcaviar 
+# bitcaviar [ARCHIVED]
 A simple Python wrapper for Bitcoin JSON-RPC API.   
 
 *If you are looking for a Bitcoin blockchain parser check [bitcaviar-plus](https://github.com/denniscm190/bitcaviar-plus).*
